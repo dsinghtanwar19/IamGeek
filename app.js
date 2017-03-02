@@ -3,25 +3,25 @@ var student = {
   type: "student"
 };
 
-document.addEventListener('DOMContentLoaded', contentLoaded);
+document.addEventListener('DOMContent', contentLoader);
 
-function contentLoaded(event) {
+function contentLoader(event) {
   document.getElementById('name').addEventListener("keyup", keyUp);
 }
 
 function keyUp(event) {
-  calculateNumericOutput();
+  calculateOutput();
 }
 
-function calculateNumericOutput() {
+function calculateOutput() {
   student.name = document.getElementById('name').value;
 
-  var totalNameValue = 0;
+  var total = 0;
   for (var i = 0; i < student.name.length; i++) {
-    totalNameValue += student.name.charCodeAt(i);
+    total += student.name.charCodeAt(i);
   }
 
   // Insert result into page
-  var output = "Total Numeric value of person's name is " + totalNameValue;
+  var output = "Total Numeric value of person's name is " + total;
   document.getElementById('output').innerText = output;
 }
