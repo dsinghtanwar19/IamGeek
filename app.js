@@ -16,7 +16,7 @@ function calculateOutput(){
 
   var total = 0;
   for(var i=0; i < student.name.length; i++ ){
-    total = student.name.charCodeAt(i);
+    total += student.name.charCodeAt(i);
   }
   var output="Total Character in name" + total;
   document.getElementById('output').innerText = output;
