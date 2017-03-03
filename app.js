@@ -1,6 +1,6 @@
 
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('mainController', function(){
+myApp.controller('mainController', function($scope){
 $scope.name = "Devendra";
 });
