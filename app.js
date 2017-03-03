@@ -1,8 +1,7 @@
-(function (){
-angular.module('myApp',[])
 
-.controller('mainController', function(){
-  
+var myApp = angular.module('myApp',[]);
+
+myApp.controller('mainController', function(){
+
 
 });
-})();
