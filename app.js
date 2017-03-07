@@ -28,7 +28,7 @@ $scope.upper = function (){
  $scope.sayHello = function(){
    var msg = "fsdfsdfgdsgsdgs";
    var output = $filter('uppercase')(msg);
-   return ouptput;
+   return output;
  }
  $scope.feedDev = function(){
     $scope.stateOfBeing = "fed";
