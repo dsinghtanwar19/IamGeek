@@ -1,18 +1,26 @@
+(function () {
+'use strict';
 
-var myApp = angular.module('myApp',[]);
+angular.module('DIApp', [])
+.controller('DIController', DIController);
 
-myApp.controller('mainController', function($scope){
-$scope.name = "";
-$scope.totalValue = 0;
-$scope.showValue = function(){
-  var totalNoValue = calculateValue($scope.name);
-  $scope.totalValue = totalNoValue;
+function DIController ($scope,
+                       $filter,
+                       $injector) {
+  $scope.name = "Yaakov";
+
+  $scope.upper = function () {
+    var upCase = $filter('uppercase');
+    $scope.name = upCase($scope.name);
+  };
+
+  console.log($injector.annotate(DIController));
 }
-function calculateValue(string){
-  var stringValue = 0;
-  for (var i = 0 ; i < string.length; i++){
-    stringValue += string.charCodeAt(i);
-  }
-  return stringValue;
+
+function AnnonateMe(name, job, blah) {
+  return "Blah!";
 }
-});
+
+console.log(DIController.toString());
+
+})();
