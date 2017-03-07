@@ -1,7 +1,7 @@
 
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('mainController', function($scope, $filter){
+myApp.controller('mainController', function($scope, $filter, LovesFilter){
 $scope.name = "Devendra";
 $scope.stateOfBeing = "hungry";
 $scope.cookieCost = .45;
@@ -27,11 +27,24 @@ $scope.upper = function (){
  console.log(dictateMe());
 
  $scope.sayYes = function(){
-   var msg = "fsdfsdfgdsgsdgs";
+   var msg = "Dev likes pizza";
    var output = $filter('uppercase')(msg);
    return output;
  }
+ $scope.sayLovesMessage = function () {
+    var msg = "Dev likes pizza";
+    msg = lovesFilter(msg)
+    return msg;
+  };
  $scope.feedDev = function(){
     $scope.stateOfBeing = "fed";
  }
 });
+
+myApp.filter('LovesFilter', function(){
+  return function (input) {
+     input = input || "";
+     input = input.replace("likes", "loves");
+     return input;
+   };
+})
