@@ -4,6 +4,7 @@ var myApp = angular.module('myApp',[]);
 myApp.controller('mainController', function($scope, $filter){
 $scope.name = "Devendra";
 $scope.stateOfBeing = "hungry";
+$scope.cookieCost = .45;
 /*$scope.totalValue = 0;
 $scope.showValue = function(){
   var totalNoValue = calculateValue($scope.name);
