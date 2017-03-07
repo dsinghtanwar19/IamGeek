@@ -2,11 +2,14 @@
 var myApp = angular.module('myApp',[]);
 
 myApp.controller('mainController', function($scope, $filter){
-
+$scope.onceCounter = 0;
 
  $scope.showNumberOfWatchers = function () {
-   console.log($scope);
+   console.log("dev",$scope.$$watchersCount);
  };
+ $scope.countOnce = function(){
+   $scope.onceCounter = 1;
+ }
 
 
 });
