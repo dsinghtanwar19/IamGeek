@@ -40,7 +40,7 @@ $scope.upper = function (){
     $scope.stateOfBeing = "fed";
  }
 
- $scope.showNoOfWatchers() = function(){
+ $scope.showNoOfWatchers = function(){
    console.log($scope);
  }
 });
