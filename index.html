@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
-<head>
-  <meta charset="utf-8">
+<html ng-app='MsgApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js" type="text/javascript"></script>
+    <script src="app.js"></script>
+    <style> body { font-size: 1.2em; }</style>
+    <title>Custom Filters</title>
+  </head>
+  <body>
+    <h1>Custom Filters</h1>
+    <div ng-controller='MsgController'>
+      Original: {{sayMessage()}} <br>
+      Loves: {{ sayLovesMessage() }} <br>
+      Truth: {{ sayLovesMessage() | truth : 'healthy' : 'cookie' }} <br>
+      BIG TRUTH: {{ sayLovesMessage() | truth : 'healthy' : 'cookie' | uppercase }}
+      <div>
+        <button ng-click="feedYaakov()">Feed Yaakov</button>
+        <br>
 
-    <title>Hello Angular </title>
-</head>
-<body>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js" type="text/javascript"></script>
-  <script src="app.js"></script>
-  <h1> Dependency  </h1>
-  <div ng-controller="mainController">
-    <!--<input type="text" ng-model="name" ng-blur="upper();">-->
-    Name is : {{name}}<br>
-    Original: {{sayYes()}} <br>
-     Loves: {{ sayLovesMessage() }} <br>
-<div>
-  <button ng-click="feedDev()"> feedDev </button><br>
-  cost is : {{cookieCost | currency : "%" : 10}}
-  <img ng-src = "Images/dev_{{stateOfBeing}}.png">
-</div>
-  </div>
+        <img ng-src="images/yaakov_{{stateOfBeing}}.png">
+      </div>
+    </div>
   </body>
 </html>
