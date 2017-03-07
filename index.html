@@ -10,15 +10,7 @@
   <script src="app.js"></script>
   <h1> Dependency  </h1>
   <div ng-controller="mainController" >
-    <!--<input type="text" ng-model="name" ng-blur="upper();">-->
-    Name is : {{name}}<br>
-    Original: {{sayYes()}} <br>
-     Loves: {{ sayLovesMessage() | truthFilter : 'pizza' : 'tea'}} <br>
-<div>
-  <button ng-click="feedDev()"> feedDev </button><br>
-  cost is : {{cookieCost | currency : "%" : 10}}
-  <img ng-src = "Images/dev_{{stateOfBeing}}.png">
-</div>
+    <button ng-click="showNoOfWatchers()">Log of watchers </button>
   </div>
   </body>
 </html>

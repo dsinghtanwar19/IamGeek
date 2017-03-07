@@ -39,6 +39,10 @@ $scope.upper = function (){
  $scope.feedDev = function(){
     $scope.stateOfBeing = "fed";
  }
+
+ $scope.showNoOfWatchers() = function(){
+   console.log($scope);
+ }
 });
 
 myApp.filter('lovesFilter', function(){
