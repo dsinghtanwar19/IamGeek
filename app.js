@@ -1,45 +1,50 @@
-(function () {
-'use strict';
 
-angular.module('MsgApp', [])
-.controller('MsgController', MsgController)
-.filter('loves', LovesFilter)
-.filter('truth', TruthFilter);
+var myApp = angular.module('myApp',[]);
 
-MsgController.$inject = ['$scope', 'lovesFilter'];
-function MsgController($scope, lovesFilter) {
-  $scope.stateOfBeing = "hungry";
+myApp.controller('mainController', function($scope, $filter){
+$scope.name = "Devendra";
+$scope.stateOfBeing = "hungry";
+$scope.cookieCost = .45;
+/*$scope.totalValue = 0;
+$scope.showValue = function(){
+  var totalNoValue = calculateValue($scope.name);
+  $scope.totalValue = totalNoValue;
+}
+function calculateValue(string){
+  var stringValue = 0;
+  for (var i = 0 ; i < string.length; i++){
+    stringValue += string.charCodeAt(i);
+  }
+  return stringValue;
+}*/
+$scope.upper = function (){
+  var upCase = $filter('uppercase');
+  $scope.name= upCase($scope.name);
+}
+ function dictateMe(name, jhohn , dev){
+   return "hurray:";
+ }
+ console.log(dictateMe());
 
-  $scope.sayMessage = function () {
-    var msg = "Yaakov likes to eat healthy snacks at night!";
-    return msg;
-  };
-
-  $scope.sayLovesMessage = function () {
-    var msg = "Yaakov likes to eat healthy snacks at night!";
+ $scope.sayYes = function(){
+   var msg = "Dev likes pizza";
+   var output = $filter('uppercase')(msg);
+   return output;
+ }
+ $scope.sayLovesMessage = function () {
+    var msg = "Dev likes pizza";
     msg = lovesFilter(msg)
     return msg;
   };
-
-  $scope.feedYaakov = function () {
+ $scope.feedDev = function(){
     $scope.stateOfBeing = "fed";
-  };
-}
+ }
+});
 
-function LovesFilter() {
+myApp.filter('LovesFilter', function(){
   return function (input) {
-    input = input || "";
-    input = input.replace("likes", "loves");
-    return input;
-  };
-}
-
-function TruthFilter() {
-  return function (input, target, replace) {
-    input = input || "";
-    input = input.replace(target, replace);
-    return input;
-  }
-}
-
-})();
+     input = input || "";
+     input = input.replace("likes", "loves");
+     return input;
+   };
+})
