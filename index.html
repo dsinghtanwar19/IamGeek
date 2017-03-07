@@ -15,7 +15,7 @@
     Message is : {{sayYes()}}<br>
 <div>
   <button ng-click="feedDev()"> feedDev </button><br>
-  cost is : {{cookieCost | currency}}
+  cost is : {{cookieCost | currency : "%" : 10}}
   <img ng-src = "Images/dev_{{stateOfBeing}}.png">
 </div>
   </div>
