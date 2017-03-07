@@ -19,4 +19,8 @@ $scope.upper = function (){
   var upCase = $filter('uppercase');
   $scope.name= upCase($scope.name);
 }
+ function dictateMe(name, jhohn , dev){
+   return "hurray:";
+ }
+ console.log(dictateMe());
 });
