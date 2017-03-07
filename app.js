@@ -3,6 +3,7 @@ var myApp = angular.module('myApp',[]);
 
 myApp.controller('mainController', function($scope, $filter){
 $scope.onceCounter = 0;
+$scope.counter = 0;
 
  $scope.showNumberOfWatchers = function () {
    console.log("dev",$scope.$$watchersCount);
@@ -10,7 +11,13 @@ $scope.onceCounter = 0;
  $scope.countOnce = function(){
    $scope.onceCounter = 1;
  }
-
+ $scope.upCounter = function(){
+   $scope.counter++;
+ }
+$scope.$watch('onceCounter', function(newValue, oldValue){
+  console.log("old value:" oldValue);
+  console.log("new value:" newValue);
+})
 
 });
 
