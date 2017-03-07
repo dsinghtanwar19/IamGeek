@@ -23,4 +23,8 @@ $scope.upper = function (){
    return "hurray:";
  }
  console.log(dictateMe());
+
+ $scope.sayHello = function(){
+   return "fdwfwqhfjkwqefq!";
+ }
 });
