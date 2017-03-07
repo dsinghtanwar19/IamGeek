@@ -13,7 +13,7 @@
     <!--<input type="text" ng-model="name" ng-blur="upper();">-->
     Name is : {{name}}<br>
     Original: {{sayYes()}} <br>
-     Loves: {{ sayLovesMessage() }} <br>
+     Loves: {{ sayLovesMessage() | truthFilter : 'pizza' : 'tea'}} <br>
 <div>
   <button ng-click="feedDev()"> feedDev </button><br>
   cost is : {{cookieCost | currency : "%" : 10}}

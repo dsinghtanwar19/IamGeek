@@ -47,4 +47,14 @@ myApp.filter('lovesFilter', function(){
      input = input.replace("likes", "loves");
      return input;
    };
+
+})
+
+myApp.filter('truthFilter', function(){
+  return function (input,target,replace) {
+     input = input || "";
+     input = input.replace(target, replace);
+     return input;
+   };
+
 })
