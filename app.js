@@ -3,6 +3,7 @@ var myApp = angular.module('myApp',[]);
 
 myApp.controller('mainController', function($scope, $filter){
 $scope.name = "Devendra";
+$scope.stateOfBeing = "hungry";
 /*$scope.totalValue = 0;
 $scope.showValue = function(){
   var totalNoValue = calculateValue($scope.name);
@@ -26,5 +27,8 @@ $scope.upper = function (){
 
  $scope.sayHello = function(){
    return "fdwfwqhfjkwqefq!";
+ }
+ $scope.feedDev = function(){
+    $scope.stateOfBeing = "fed";
  }
 });
