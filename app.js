@@ -25,7 +25,7 @@ $scope.upper = function (){
  }
  console.log(dictateMe());
 
- $scope.sayHello = function(){
+ $scope.sayYes = function(){
    var msg = "fsdfsdfgdsgsdgs";
    var output = $filter('uppercase')(msg);
    return output;
