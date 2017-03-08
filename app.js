@@ -8,10 +8,11 @@ $scope.counter = 0;
 
  $scope.upCounter = function(){
    setTimeout(function(){
-     $scope.counter++;
-     console.log("Counter incremented!");
-     $scope.$digest();
-   }, 5000);
+     $scope.$apply(function(){
+       $scope.counter++;
+       console.log("Counter incremented!");
+     });
+   }, 1000);
 
  };
 
