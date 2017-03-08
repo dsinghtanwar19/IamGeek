@@ -14,6 +14,7 @@
 <!--    <ul>
   <li ng-repeat= "item in shoppingList1">{{ item }}</li>
 </ul>-->
+<input type = "text" ng-model="shoppingList2[0].quantity">
 <ul>
   <li ng-repeat= "item in shoppingList2">{{$index + 1}}. Buy{{ item.quantity }} in {{item.name}}(S)</li>
 </ul>
