@@ -4,7 +4,7 @@ var myApp = angular.module('myApp',[]);
 myApp.controller('mainController', function($scope, $filter, $timeout){
 
 $scope.firstName = "Devendra";
-$scope.fullName="";
+//$scope.fullName="";
 
 $scope.showNumberOfWatchers = function () {
    console.log("# of Watchers: ", $scope.$$watchersCount);
