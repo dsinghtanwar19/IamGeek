@@ -15,7 +15,7 @@ $scope.counter = 0;
    $scope.counter++;
  }
  $scope.$watch(function(){
-   console.log("Digest loop fired");
+   console.log("Digest loop has fired");
  })
 /*$scope.$watch('onceCounter', function(newValue, oldValue){
   console.log("old value:", oldValue);
