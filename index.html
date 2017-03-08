@@ -15,7 +15,7 @@
   <li ng-repeat= "item in shoppingList1">{{ item }}</li>
 </ul>-->
 <ul>
-  <li ng-repeat= "item in shoppingList2">Buy{{ item.quantity }} in {{item.name}}(S)</li>
+  <li ng-repeat= "item in shoppingList2">{{$index + 1}}. Buy{{ item.quantity }} in {{item.name}}(S)</li>
 </ul>
 
 
