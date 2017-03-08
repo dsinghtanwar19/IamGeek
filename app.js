@@ -4,6 +4,7 @@ var myApp = angular.module('myApp',[]);
 myApp.controller('mainController', function($scope, $filter){
 $scope.onceCounter = 0;
 $scope.counter = 0;
+$scope.name = "";
 
  $scope.showNumberOfWatchers = function () {
    console.log("dev",$scope.$$watchersCount);
@@ -14,6 +15,7 @@ $scope.counter = 0;
  $scope.upCounter = function(){
    $scope.counter++;
  }
+ 
  $scope.$watch(function(){
    console.log("Digest loop has fired");
  })
