@@ -14,6 +14,9 @@ $scope.counter = 0;
  $scope.upCounter = function(){
    $scope.counter++;
  }
+ $scope.$watch(function(){
+   console.log("Digest loop fired");
+ })
 /*$scope.$watch('onceCounter', function(newValue, oldValue){
   console.log("old value:", oldValue);
   console.log("new value:", newValue);
