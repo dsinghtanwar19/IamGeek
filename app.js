@@ -12,7 +12,7 @@ $scope.counter = 0;
        $scope.counter++;
        console.log("Counter incremented!");
      });
-   }, 1000);
+   }, 2000);
 
  };
 
