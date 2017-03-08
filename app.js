@@ -27,12 +27,12 @@ $scope.logFullName = function(){
    $timeout(function(){
      $scope.counter++;
      console.log("Counter incremented!");
-   }, 2000);*/
-
- };
+   }, 2000);
 
 
-/*$scope.$watch('onceCounter', function(newValue, oldValue){
+
+
+$scope.$watch('onceCounter', function(newValue, oldValue){
   console.log("old value:", oldValue);
   console.log("new value:", newValue);
 })
