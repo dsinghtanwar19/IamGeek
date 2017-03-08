@@ -10,15 +10,12 @@
   <script src="app.js"></script>
   <h1> Dependency  </h1>
   <div ng-controller="mainController" >
-    <button ng-click="showNumberOfWatchers()"> no. of watchers </button>
-    <button ng-click="setFullName()"> Set Full Name </button>
-    Full Name is : {{ :: fullName }}<br>
-    <button ng-click="logFirstName()"> log first Name </button>
-    <button ng-click="logFullName()"> log Full Name </button>
+    <h1> Shopping List: </h1>
+    <ul>
 
-    <div>
-      <input type="text" ng-model = "firstName">
-    </div>
+      <li ng-repeat= "items in shoppingLit1">{{ item }}</li>
+    </ul>
+
 
   </div>
   </body>
