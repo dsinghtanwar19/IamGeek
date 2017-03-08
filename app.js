@@ -25,7 +25,7 @@ myApp.controller('mainController', function($scope, $filter, $timeout){
 
 $scope.shoppingList1 = shoppingList1;
 $scope.shoppingList2 = shoppingList2;
-$scope.addToQueue = function () {
+$scope.addToList = function () {
     var newItem = {
       name: $scope.newItemName,
       quantity: $scope.newItemQuantity
