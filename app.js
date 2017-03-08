@@ -14,14 +14,14 @@ $scope.counter = 0;
  $scope.upCounter = function(){
    $scope.counter++;
  }
-$scope.$watch('onceCounter', function(newValue, oldValue){
+/*$scope.$watch('onceCounter', function(newValue, oldValue){
   console.log("old value:", oldValue);
   console.log("new value:", newValue);
 })
 $scope.$watch('counter', function(newValue, oldValue){
   console.log("counter old value:", oldValue);
   console.log("counter new value:", newValue);
-})
+})*/
 
 });
 
