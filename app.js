@@ -1,24 +1,21 @@
 
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('mainController', function($scope, $filter){
-$scope.onceCounter = 0;
+myApp.controller('mainController', function($scope, $filter, $timeout){
+
 $scope.counter = 0;
-$scope.name = "devendra";
 
- $scope.showNumberOfWatchers = function () {
-   console.log("dev",$scope.$$watchersCount);
- };
- $scope.countOnce = function(){
-   $scope.onceCounter = 1;
- }
+
  $scope.upCounter = function(){
-   $scope.counter++;
- }
+   setTimeout(function(){
+     $scope.counter++;
+     console.log("Counter incremented!");
+     $scope.$digest();
+   }, 5000);
 
- $scope.$watch(function(){
-   console.log("Digest loop has fired");
- })
+ };
+
+
 /*$scope.$watch('onceCounter', function(newValue, oldValue){
   console.log("old value:", oldValue);
   console.log("new value:", newValue);
