@@ -15,8 +15,8 @@ $scope.counter = 0;
    $scope.counter++;
  }
 $scope.$watch('onceCounter', function(newValue, oldValue){
-  console.log("old value:" oldValue);
-  console.log("new value:" newValue);
+  console.log("old value:", oldValue);
+  console.log("new value:", newValue);
 })
 
 });
