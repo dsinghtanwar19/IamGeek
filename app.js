@@ -6,20 +6,21 @@ myApp.controller('mainController', function($scope, $filter, $timeout){
 $scope.firstName = "Devendra";
 $scope.fullName="";
 
-$scope.showWatchers = function(){
-  console.log("shaalen is freak", $scope.$$watchersCount);
-}
+$scope.showNumberOfWatchers = function () {
+   console.log("# of Watchers: ", $scope.$$watchersCount);
+ };
 
-$scope.setFullName = function (){
-  $scope.fullName = $scope.firstName + " " + "Singh";
-}
+ $scope.setFullName = function () {
+   $scope.fullName = $scope.firstName + " " + "Chaikin";
+ };
 
-$scope.logFirstName = function(){
-  console.log("first name is :", $scope.firstName);
-}
-$scope.logFullName = function(){
-  console.log("full name is :", $scope.fullName);
-}
+ $scope.logFirstName = function () {
+   console.log("First name is: ", $scope.firstName);
+ };
+
+ $scope.logFullName = function () {
+   console.log("Full name is: ", $scope.fullName);
+ };
 
 });
 
