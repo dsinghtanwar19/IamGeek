@@ -11,10 +11,12 @@
   <h1> Dependency  </h1>
   <div ng-controller="mainController" >
     <h1> Shopping List: </h1>
-    <ul>
-
-      <li ng-repeat= "item in shoppingList1">{{ item }}</li>
-    </ul>
+<!--    <ul>
+  <li ng-repeat= "item in shoppingList1">{{ item }}</li>
+</ul>-->
+<ul>
+  <li ng-repeat= "item in shoppingList2">Buy{{ item.quantity }} in {{item.name}}(S)</li>
+</ul>
 
 
   </div>
