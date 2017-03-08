@@ -3,14 +3,31 @@ var myApp = angular.module('myApp',[]);
 
 myApp.controller('mainController', function($scope, $filter, $timeout){
 
-$scope.counter = 0;
+$scope.firstName = "Devendra";
+$scope.fullName="";
+
+$scope.showWatchers = function(){
+  console.log("shaalen is freak", $scope.$$watchersCount);
+}
+
+$scope.setFullName = function (){
+  $scope.fullName = $scope.firstName + " " + "Singh";
+}
+
+$scope.logFirstName = function(){
+  console.log("first name is :", $scope.firstName);
+}
+$scope.logFullName = function(){
+  console.log("full name is :", $scope.fullName);
+}
 
 
- $scope.upCounter = function(){
+
+ /*$scope.upCounter = function(){
    $timeout(function(){
      $scope.counter++;
      console.log("Counter incremented!");
-   }, 2000);
+   }, 2000);*/
 
  };
 

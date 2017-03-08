@@ -10,12 +10,16 @@
   <script src="app.js"></script>
   <h1> Dependency  </h1>
   <div ng-controller="mainController" >
+    <button ng-click="showWatchers()"> no. of watchers </button>
+    <button ng-click="setFullName()"> Set Full Name </button>
+    Full Name is : {{ : : fullName}}<br>
+    <button ng-click="logFirstName()"> Set Full Name </button>
+    <button ng-click="logFullName()"> Set Full Name </button>
+
     <div>
-      <button ng-click="upCounter()">Counter++ </button>
+      <input type="text" ng-model = "firstName">
     </div>
-    <div>
-      counter:{{counter}}
-    </div>
+
   </div>
   </body>
 </html>
