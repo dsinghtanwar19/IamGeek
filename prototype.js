@@ -1,5 +1,5 @@
 var parent = {
-  type : "parent",
+  value : "parentValue",
   obj : {
     objValue : "parentObjValue"
   },
