@@ -26,3 +26,10 @@ console.log("CHILD - child.obj.objValue: ", child.obj.objValue);
   console.log("PARENT - parent.obj.objValue: ", parent.obj.objValue);
  console.log("parent: ", parent);
  console.log("child: ", child);
+
+
+ console.log("child.obj === parent.obj ? ", child.obj === parent.obj);
+
+ var grandChild = Object.create(child);
+ console.log("Grandchild: ", grandChild);
+ grandChild.walk();
