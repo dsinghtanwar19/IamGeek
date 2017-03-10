@@ -1,21 +1,35 @@
 
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('parentController', function($scope, $filter, $timeout){
-$scope.parentValue=1;
-$scope.pc = this;
-$scope.pc.parentValue=1;
+myApp.controller('shoppingController', function($scope, $filter, $timeout){
+  var itemAdder = this;
+  itemAdder.itemName ="";
+  itemAdder.itemQuantity="";
+  itemAdder.addItem = function(){
+    shoppingListService.addItem(itemAdder.itemName, itemAdder.itemQuantity);
+  }
+});
+myApp.controller('shoppingListController', function($scope, $filter, $timeout){
+var showList = this;
+showList.items = shoppingListService.getItems();
+});
 
-});
-myApp.controller('childController', function($scope, $filter, $timeout){
+myApp.service("shoppingListService", function(){
+  var service = this;
+  var items = [];
 
-});
-myApp.controller('parentController2', function(){
-var parent = this;
-parent.value = 1;
-});
-myApp.controller('childController2', function($scope, $filter, $timeout){
-var child = this;
-child.value = 5;
-console.log("test", $scope);
-});
+  service.addItem = function(itemName,quantity){
+    var item ={
+      name : itemName,
+    quantity: quantity
+  }
+  items.push(item);
+  }
+
+  service.removeItem = function(itemIndex){
+    items.splice(itemIndex);
+  }
+  service.getItems= function(){
+    return items;
+  }
+})

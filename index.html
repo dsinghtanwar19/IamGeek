@@ -8,19 +8,20 @@
 <body>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js" type="text/javascript"></script>
   <script src="app.js"></script>
-  <h1> CHANGED  </h1>
-  <div ng-controller="parentController" >
-    <div ng-controller="childController">
-    </div>
-    </div>
+  <h1> Custom Service  </h1>
+  <div ng-controller="shoppingController as itemAdder" >
+    <input type = "text" ng-model="itemAdder.itemName" placeholder="item name">
+    <input type="text" ng-model="itemAdder.itemQuantity" placeholder="item quantity">
+    <button ng-click="itemAdder.addItem();"> Add Item </button>
+</div>
+<div ng-controller = "shoppingListController as showList">
+<ol>
+<li ng-repeat="item in showList.iiem">
+  {{item.quantity}} of {{item.name}}
+  <button ng-click="showList.removeItem($index);"> Remove Item </button>
+</li>
+</ol>
+</div>
 
-    <div ng-controller='parentController2 as parent'>
-      Parent value: {{ parent.value }}
-
-      <div ng-controller='childController2 as child'>
-        Child value: {{ child.value }}
-        Parent value: {{ parent.value }}
-      </div>
-    </div>
   </body>
 </html>
