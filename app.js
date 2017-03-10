@@ -21,5 +21,5 @@ $scope.parentValue = 5;
    console.log("$scope: ", $scope);
 
    console.log("$scope.$parent.parentValue: ", $scope.$parent.parentValue);
-}
+
 });
