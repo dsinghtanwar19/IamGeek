@@ -14,7 +14,7 @@ var showList = this;
 showList.items = shoppingListService.getItems();
 });
 
-myApp.service("shoppingListService", function(){
+myApp.factory("shoppingListService", function(){
   var service = this;
   var items = [];
 
