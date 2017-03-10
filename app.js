@@ -1,7 +1,7 @@
 
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('shoppingController', function($scope, $filter, $timeout){
+myApp.controller('shoppingController', function($scope, $filter, $shoppingListService){
   var itemAdder = this;
   itemAdder.itemName ="";
   itemAdder.itemQuantity="";
@@ -9,7 +9,7 @@ myApp.controller('shoppingController', function($scope, $filter, $timeout){
     shoppingListService.addItem(itemAdder.itemName, itemAdder.itemQuantity);
   }
 });
-myApp.controller('shoppingListController', function($scope, $filter, $timeout){
+myApp.controller('shoppingListController', function($scope, $filter, $shoppingListService){
 var showList = this;
 showList.items = shoppingListService.getItems();
 });
