@@ -16,7 +16,7 @@
 </div>
 <div ng-controller = "shoppingListController as showList">
 <ol>
-<li ng-repeat="item in showList.iiem">
+<li ng-repeat="item in showList.items">
   {{item.quantity}} of {{item.name}}
   <button ng-click="showList.removeItem($index);"> Remove Item </button>
 </li>
