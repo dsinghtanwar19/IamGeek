@@ -12,6 +12,10 @@ myApp.controller('shoppingController', function($scope, $filter, shoppingListSer
 myApp.controller('shoppingListController', function($scope, $filter, shoppingListService1){
 var showList = this;
 showList.items = shoppingListService1.getItems();
+
+showList.removeItem = function(itemIndex){
+  shoppingListService1.removeItem(itemIndex);
+}
 });
 
 myApp.service("shoppingListService1", function(){
@@ -27,7 +31,7 @@ myApp.service("shoppingListService1", function(){
   }
 
   service.removeItem = function(itemIndex){
-    items.splice(itemIndex);
+    items.splice(itemIndex,1);
   }
   service.getItems= function(){
     return items;
