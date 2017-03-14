@@ -14,7 +14,7 @@ var list = this;
      shoppingListService.addItem(list2.itemName, list2.itemQuantity);
    }
    catch(error){
-     list.errorMessage = error.message;
+     list.detail = error.message;
    }
  }
  list.removeItem = function(itemIndex){
