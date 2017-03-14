@@ -40,7 +40,7 @@ function shoppingListService2(maxItems){
   var items = [];
 
   service.addItem = function (itemName,quantity){
-    if((maxItems == undefined) || (maxItems !== undefined) && (items.lenght < maxItems)){
+    if((maxItems == undefined) || (maxItems !== undefined) && (items.length < maxItems)){
       var item = {
         name : itemName,
         quantity:quantity
