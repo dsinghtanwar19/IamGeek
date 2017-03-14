@@ -35,7 +35,7 @@ var shoppingList = shoppingListFactory(3);
  }
 });
 
-myApp.service("shoppingListService1", function(maxItems){
+function shoppingListService1(maxItems){
   var service = this;
   var items = [];
 
@@ -59,7 +59,7 @@ myApp.service("shoppingListService1", function(maxItems){
   service.getItems= function(){
     return items;
   }
-})
+}
 
 myApp.factory("shoppingListFactory", function(){
   var factory = function(maxItems){
