@@ -1,41 +1,28 @@
 
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('shoppingController1', function($scope, $filter, shoppingListFactory){
-  var list1 = this;
-  var shoppingList = shoppingListFactory();
-  list1.items=shoppingList.getItems();
-  list1.itemName = "";
-  list1.itemQuantity = "";
-  list1.addItem = function(){
-    shoppingList.addItem(list1.itemName,list1.itemQuantity);
-  }
-  list1.removeItem = function(itemIndex){
-    shoppingList.removeItem(itemIndex);
-  }
-});
-myApp.controller('shoppingController2', function($scope, $filter,error, shoppingListFactory){
-var list2 = this;
-var shoppingList = shoppingListFactory(3);
 
- list2.items = shoppingList.getItems();
+myApp.controller('shoppingController', function($scope, $filter,error, shoppingListService){
+var list = this;
 
- list2.itemName = "";
- list2.itemQuantity = "";
- list2.addItem = function(){
+ list.items = shoppingListService.getItems();
+
+ list.itemName = "";
+ list.itemQuantity = "";
+ list.addItem = function(){
    try{
-     shoppingList.addItem(list2.itemName, list2.itemQuantity);
+     shoppingListService.addItem(list2.itemName, list2.itemQuantity);
    }
    catch(error){
-     list2.errorMessage1 = error.message;
+     list.errorMessage1 = error.message;
    }
  }
- list2.removeItem = function(itemIndex){
-   shoppingList.removeItem(itemIndex);
+ list.removeItem = function(itemIndex){
+   shoppingListService.removeItem(itemIndex);
  }
 });
 
-function shoppingListService2(maxItems){
+function shoppingListService(maxItems){
   var service = this;
   var items = [];
 
@@ -61,9 +48,16 @@ function shoppingListService2(maxItems){
   }
 }
 
-myApp.factory("shoppingListFactory", function(){
-  var factory = function(maxItems){
-    return new shoppingListService2(maxItems);
-  }
-  return factory;
+myApp.provider("shoppingListService", function(){
+  var provider = this;
+
+  provider.defaults = {
+    maxItems: 10
+  };
+
+  provider.$get = function () {
+    var shoppingList = new shoppingListService(provider.defaults.maxItems);
+
+    return shoppingList;
+  };
 })
