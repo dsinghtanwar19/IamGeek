@@ -14,7 +14,7 @@ var showList = this;
 showList.items = shoppingListService.getItems();
 });
 
-myApp.factory("shoppingListService", function(){
+myApp.directive("shoppingListService", function(){
   var service = this;
   var items = [];
 
