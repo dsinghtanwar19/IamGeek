@@ -11,7 +11,7 @@ var list = this;
  list.itemQuantity = "";
  list.addItem = function(){
    try{
-     shoppingListService.addItem(list2.itemName, list2.itemQuantity);
+     shoppingListService.addItem(list.itemName, list.itemQuantity);
    }
    catch(error){
      list.detail = error.message;
