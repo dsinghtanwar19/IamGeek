@@ -27,7 +27,7 @@ var shoppingList = shoppingListFactory(3);
      shoppingList.addItem(list2.itemName, list2.itemQuantity);
    }
    catch(error){
-     list2.errorDetail = error.message;
+     list2.errorMessage = error.message;
    }
  }
  list2.removeItem = function(itemIndex){
