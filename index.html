@@ -9,7 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js" type="text/javascript"></script>
   <script src="app.js"></script>
   <h1> Custom Service  </h1>
-  <div id = "list" ng-controller="shoppingController as list" >
+  <div id = "list" ng-controller="ShoppingController as list" >
     <h3> shopping list </h3>
     <input type = "text" ng-model="list.itemName" placeholder="item name">
     <input type="text" ng-model="list.itemQuantity" placeholder="item quantity">
@@ -17,10 +17,10 @@
     <ol>
     <li ng-repeat="item in list.items">
       {{item.quantity}} of {{item.name}}
-      <button ng-click="list.removeItem($index);"> Add Item </button>
+      <button ng-click="list.removeItem($index);"> Remove Item </button>
     </li>
     </ol>
-    <div class="error">Error: {{list.detail1}}</div>
+    <div class="error">Error: {{list.errorMessage}}</div>
 </div>
   </body>
 </html>
