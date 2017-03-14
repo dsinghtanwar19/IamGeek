@@ -9,18 +9,32 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js" type="text/javascript"></script>
   <script src="app.js"></script>
   <h1> Custom Service  </h1>
-  <div ng-controller="shoppingController as itemAdder" >
-    <input type = "text" ng-model="itemAdder.itemName" placeholder="item name">
-    <input type="text" ng-model="itemAdder.itemQuantity" placeholder="item quantity">
-    <button ng-click="itemAdder.addItem();"> Add Item </button>
+  <div id = "list1" ng-controller="shoppingController1 as list1" >
+    <h3> shopping list 1</h3>
+    <input type = "text" ng-model="list1.itemName" placeholder="item name">
+    <input type="text" ng-model="list1.itemQuantity" placeholder="item quantity">
+    <button ng-click="list1.addItem();"> Add Item </button>
+    <ol>
+    <li ng-repeat="item in list1.items">
+      {{item.quantity}} of {{item.name}}
+      <button ng-click="list1.removeItem($index);"> Remove Item </button>
+    </li>
+    </ol>
+    <div class="error">Error: {{list1.errorMessage}}</div>
 </div>
-<div ng-controller = "shoppingListController as showList">
-<ol>
-<li ng-repeat="item in showList.items">
-  {{item.quantity}} of {{item.name}}
-  <button ng-click="showList.removeItem($index);"> Remove Item </button>
-</li>
-</ol>
+<div id="list2" ng-controller = "shoppingController2 as list2">
+  <h3> shopping list 2</h3>
+  <input type = "text" ng-model="list2.itemName" placeholder="item name">
+  <input type="text" ng-model="list2.itemQuantity" placeholder="item quantity">
+  <button ng-click="list2.addItem();"> Add Item </button>
+  <ol>
+  <li ng-repeat="item in list2.items">
+    {{item.quantity}} of {{item.name}}
+    <button ng-click="list2.removeItem($index);"> Remove Item </button>
+  </li>
+  </ol>
+  <div class="error">Error: {{list2.errorMessage}}</div>
+</div>
 </div>
 
   </body>

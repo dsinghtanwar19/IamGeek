@@ -1,34 +1,57 @@
 
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('shoppingController', function($scope, $filter, shoppingListService1){
-  var itemAdder = this;
-  itemAdder.itemName ="";
-  itemAdder.itemQuantity="";
-  itemAdder.addItem = function(){
-    shoppingListService1.addItem(itemAdder.itemName, itemAdder.itemQuantity);
+myApp.controller('shoppingController1', function($scope, $filter, shoppingListFactory){
+  var list1 = this;
+  var shoppingList = shoppingListFactory();
+  list1.items=shoppingList.getItems();
+  list1.itemName = "";
+  list1.itemQuantity = "";
+  list1.addItem = function(){
+    shoppingList.addItem(list1.itemName,list1.itemQuantity);
+  }
+  list1.removeItem = function(itemIndex){
+    shoppingList.removeItem(itemIndex);
   }
 });
-myApp.controller('shoppingListController', function($scope, $filter, shoppingListService1){
-var showList = this;
-showList.items = shoppingListService1.getItems();
+myApp.controller('shoppingController2', function($scope, $filter, ShoppingListFactory){
+var list2 = this;
+var shoppingList = ShoppingListFactory(3);
 
-showList.removeItem = function(itemIndex){
-  shoppingListService1.removeItem(itemIndex);
-}
+ list2.items = shoppingList.getItems();
+
+ list2.itemName = "";
+ list2.itemQuantity = "";
+ list2.addItem = function(){
+   try{
+     shoppingList.addItem(list2.itemName, list2.itemQuantity);
+   }
+   catch(error){
+     list2.errorMessage = error.message;
+   }
+ }
+ list2.removeItem = function(itemIndex){
+   shoppingList.removeItem(itemIndex);
+ }
 });
 
-myApp.service("shoppingListService1", function(){
+myApp.service("shoppingListService", function(maxItems){
   var service = this;
   var items = [];
 
-  service.addItem = function(itemName,quantity){
-    var item ={
-      name : itemName,
-    quantity: quantity
-  }
-  items.push(item);
-  }
+  service.addItem = function (itemName,quantity){
+    if((maxItems == undefined) || (maxItems !== undefined) && (items.lenght < maxItems)){
+      var item = {
+        name : itemName,
+        quantity:quantity
+      };
+      items.push(item);
+    }
+    else{
+      throw new error("Max items (" + maxItems + ") reached.")
+    }
+
+  };
 
   service.removeItem = function(itemIndex){
     items.splice(itemIndex,1);
@@ -36,4 +59,11 @@ myApp.service("shoppingListService1", function(){
   service.getItems= function(){
     return items;
   }
+})
+
+myApp.factory("shoppingListFactory", function(){
+  var factory = function(maxItems){
+    return new shoppingListService(maxItems);
+  }
+  return factory;
 })
