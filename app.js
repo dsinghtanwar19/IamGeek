@@ -27,7 +27,7 @@ var shoppingList = shoppingListFactory(3);
      shoppingList.addItem(list2.itemName, list2.itemQuantity);
    }
    catch(error){
-     list2.errorMessage = error.message;
+     list2.errorMessage1 = error.message;
    }
  }
  list2.removeItem = function(itemIndex){
@@ -48,7 +48,7 @@ function shoppingListService2(maxItems){
       items.push(item);
     }
     else {
-      throw new Error("Max items (" + maxItems + ") reached.")
+      throw new error("Max items (" + maxItems + ") reached.")
     }
 
   };
