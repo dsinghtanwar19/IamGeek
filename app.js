@@ -2,27 +2,27 @@
 var myApp = angular.module('myApp',[]);
 
 
-myApp.controller('shoppingController', function($scope, $filter,error, shoppingListService){
+myApp.controller('shoppingController', function($scope, $filter,error, ShoppingListService){
 var list = this;
 
- list.items = shoppingListService.getItems();
+ list.items = ShoppingListService.getItems();
 
  list.itemName = "";
  list.itemQuantity = "";
  list.addItem = function(){
    try{
-     shoppingListService.addItem(list.itemName, list.itemQuantity);
+     ShoppingListService.addItem(list.itemName, list.itemQuantity);
    }
    catch(error){
      list.detail1 = error.message;
    }
  }
  list.removeItem = function(itemIndex){
-   shoppingListService.removeItem(itemIndex);
+   ShoppingListService.removeItem(itemIndex);
  }
 });
 
-function shoppingListService(maxItems){
+function ShoppingListService(maxItems){
   var service = this;
   var items = [];
 
@@ -48,7 +48,7 @@ function shoppingListService(maxItems){
   }
 }
 
-myApp.provider("shoppingListService", function(){
+myApp.provider("ShoppingListService", function(){
   var provider = this;
 
   provider.defaults = {
@@ -56,8 +56,12 @@ myApp.provider("shoppingListService", function(){
   };
 
   provider.$get = function () {
-    var shoppingList = new shoppingListService(provider.defaults.maxItems);
+    var shoppingList = new ShoppingListService(provider.defaults.maxItems);
 
     return shoppingList;
   };
+})
+
+myApp.config("ShoppingListServiceProvider", function(ShoppingListServiceProvider){
+  ShoppingListServiceProvider.defaults.maxItems = 2;
 })
