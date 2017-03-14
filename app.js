@@ -14,7 +14,7 @@ myApp.controller('shoppingController1', function($scope, $filter, shoppingListFa
     shoppingList.removeItem(itemIndex);
   }
 });
-myApp.controller('shoppingController2', function($scope, $filter, shoppingListFactory){
+myApp.controller('shoppingController2', function($scope, $filter,error, shoppingListFactory){
 var list2 = this;
 var shoppingList = shoppingListFactory(3);
 
@@ -26,7 +26,7 @@ var shoppingList = shoppingListFactory(3);
    try{
      shoppingList.addItem(list2.itemName, list2.itemQuantity);
    }
-   catch{
+   catch(error){
      list2.errorMessage = error.message;
    }
  }
