@@ -1,20 +1,20 @@
 
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('shoppingController', function($scope, $filter, shoppingListService){
+myApp.controller('shoppingController', function($scope, $filter, shoppingListService1){
   var itemAdder = this;
   itemAdder.itemName ="";
   itemAdder.itemQuantity="";
   itemAdder.addItem = function(){
-    shoppingListService.addItem(itemAdder.itemName, itemAdder.itemQuantity);
+    shoppingListService1.addItem(itemAdder.itemName, itemAdder.itemQuantity);
   }
 });
-myApp.controller('shoppingListController', function($scope, $filter, shoppingListService){
+myApp.controller('shoppingListController', function($scope, $filter, shoppingListService1){
 var showList = this;
-showList.items = shoppingListService.getItems();
+showList.items = shoppingListService1.getItems();
 });
 
-myApp.service("shoppingListService", function(){
+myApp.service("shoppingListService1", function(){
   var service = this;
   var items = [];
 
