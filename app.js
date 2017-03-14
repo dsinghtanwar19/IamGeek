@@ -14,9 +14,9 @@ myApp.controller('shoppingController1', function($scope, $filter, shoppingListFa
     shoppingList.removeItem(itemIndex);
   }
 });
-myApp.controller('shoppingController2', function($scope, $filter, ShoppingListFactory){
+myApp.controller('shoppingController2', function($scope, $filter, shoppingListFactory){
 var list2 = this;
-var shoppingList = ShoppingListFactory(3);
+var shoppingList = shoppingListFactory(3);
 
  list2.items = shoppingList.getItems();
 
