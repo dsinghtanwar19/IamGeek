@@ -26,7 +26,7 @@ var shoppingList = shoppingListFactory(3);
    try{
      shoppingList.addItem(list2.itemName, list2.itemQuantity);
    }
-   catch(error){
+   catch{
      list2.errorMessage = error.message;
    }
  }
