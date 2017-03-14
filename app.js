@@ -1,73 +1,56 @@
-(function () {
-'use strict';
 
-angular.module('ShoppingListApp', [])
-.controller('ShoppingListController', ShoppingListController)
-.provider('ShoppingListService', ShoppingListServiceProvider)
-.config(Config);
+var myApp = angular.module('myApp',[]);
 
-Config.$inject = ['ShoppingListServiceProvider'];
-function Config(ShoppingListServiceProvider) {
-  // Save Yaakov from himself
+myApp.config("ShoppingListServiceProvider", function(ShoppingListServiceProvider){
   ShoppingListServiceProvider.defaults.maxItems = 2;
-}
+})
+myApp.controller('shoppingController', function($scope, $filter,error, ShoppingListService){
+var list = this;
 
+ list.items = ShoppingListService.getItems();
 
-ShoppingListController.$inject = ['ShoppingListService'];
-function ShoppingListController(ShoppingListService) {
-  var list = this;
+ list.itemName = "";
+ list.itemQuantity = "";
+ list.addItem = function(){
+   try{
+     ShoppingListService.addItem(list.itemName, list.itemQuantity);
+   }
+   catch(error){
+     list.errorMessage = error.message;
+   }
+ }
+ list.removeItem = function(itemIndex){
+   ShoppingListService.removeItem(itemIndex);
+ }
+});
 
-  list.items = ShoppingListService.getItems();
-
-  list.itemName = "";
-  list.itemQuantity = "";
-
-  list.addItem = function () {
-    try {
-      ShoppingListService.addItem(list.itemName, list.itemQuantity);
-    } catch (error) {
-      list.errorMessage = error.message;
-    }
-  };
-
-  list.removeItem = function (itemIndex) {
-    ShoppingListService.removeItem(itemIndex);
-  };
-}
-
-
-// If not specified, maxItems assumed unlimited
-function ShoppingListService(maxItems) {
+function ShoppingListService(maxItems){
   var service = this;
-
-  // List of shopping items
   var items = [];
 
-  service.addItem = function (itemName, quantity) {
-    if ((maxItems === undefined) ||
-        (maxItems !== undefined) && (items.length < maxItems)) {
+  service.addItem = function (itemName,quantity){
+    if((maxItems == undefined) || (maxItems !== undefined) && (items.length < maxItems)){
       var item = {
-        name: itemName,
-        quantity: quantity
+        name : itemName,
+        quantity:quantity
       };
       items.push(item);
     }
     else {
-      throw new Error("Max items (" + maxItems + ") reached.");
+      throw new error("Max items (" + maxItems + ") reached.")
     }
+
   };
 
-  service.removeItem = function (itemIndex) {
-    items.splice(itemIndex, 1);
-  };
-
-  service.getItems = function () {
+  service.removeItem = function(itemIndex){
+    items.splice(itemIndex,1);
+  }
+  service.getItems= function(){
     return items;
-  };
+  }
 }
 
-
-function ShoppingListServiceProvider() {
+myApp.provider("ShoppingListService", function(){
   var provider = this;
 
   provider.defaults = {
@@ -79,6 +62,4 @@ function ShoppingListServiceProvider() {
 
     return shoppingList;
   };
-}
-
-})();
+})
