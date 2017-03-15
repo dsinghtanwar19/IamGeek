@@ -1,10 +1,10 @@
 
-var myApp = angular.module('myApp',[]);
+var myApp = angular.module('myApp',[]).config(Config);
 
-/*Config.$inject = ['ShoppingListServiceProvider'];
+Config.$inject = ['ShoppingListServiceProvider'];
 function Config(ShoppingListServiceProvider){
   ShoppingListServiceProvider.defaults.maxItems = 2;
-}*/
+}
 
 
 myApp.controller('shoppingController',['$scope', '$filter', 'ShoppingListService', function($scope, $filter, ShoppingListService){
