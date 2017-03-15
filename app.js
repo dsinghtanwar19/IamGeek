@@ -1,5 +1,5 @@
 
-var myApp = angular.module('myApp',[]);
+var myApp = angular.module('myApp',[ngRoute]);
 
 
 myApp.controller('shoppingController', function($scope, $filter,error, ShoppingListService){
