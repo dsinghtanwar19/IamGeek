@@ -1,5 +1,5 @@
 
-var myApp = angular.module('myApp',['ngRoute']);
+var myApp = angular.module('myApp',[]);
 
 
 myApp.controller('shoppingController', function($scope, $filter,error, ShoppingListService){
@@ -62,6 +62,6 @@ myApp.provider("ShoppingListService", function(){
   };
 })
 
-myApp.config("ShoppingListServiceProvider", function(ShoppingListServiceProvider){
+myApp.config(['ShoppingListServiceProvider', function($ShoppingListServiceProvider){
   ShoppingListServiceProvider.defaults.maxItems = 2;
-})
+}]);
