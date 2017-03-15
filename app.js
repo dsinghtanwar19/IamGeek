@@ -40,7 +40,7 @@ function ShoppingListService(maxItems){
       items.push(item);
     }
     else {
-      throw new error("Max items (" + maxItems + ") reached.")
+      throw new Error("Max items (" + maxItems + ") reached.")
     }
 
   };
