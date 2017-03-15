@@ -7,7 +7,7 @@ function Config(ShoppingListServiceProvider){
 }
 
 
-myApp.controller('shoppingController', function($scope, $filter,error, ShoppingListService){
+myApp.controller('shoppingController', function($scope, $filter, ShoppingListService){
 var list = this;
 
  list.items = ShoppingListService.getItems();
