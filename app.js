@@ -7,7 +7,7 @@ function Config(ShoppingListServiceProvider){
 }
 
 
-myApp.controller('shoppingController', function($scope, $filter, ShoppingListService){
+myApp.controller('shoppingController',['$scope', '$filter', 'ShoppingListService', function($scope, $filter, ShoppingListService){
 var list = this;
 
  list.items = ShoppingListService.getItems();
@@ -25,7 +25,7 @@ var list = this;
  list.removeItem = function(itemIndex){
    ShoppingListService.removeItem(itemIndex);
  }
-});
+}]);
 
 function ShoppingListService(maxItems){
   var service = this;
