@@ -43,7 +43,7 @@ myApp.service("ShoppingListService", ['$q','WeightFilterService', function($q, W
     });
   };*/
 
-  service.addItem = function(name,quantity){
+  /*service.addItem = function(name,quantity){
     var promise= WeightFilterService.checkName(name);
     promise.then(function(response){
       return WeightFilterService.checkQuantity(quantity);
@@ -58,7 +58,24 @@ myApp.service("ShoppingListService", ['$q','WeightFilterService', function($q, W
     .catch(function(errorResponse){
       console.log(errorResponse.message);
     })
-  };
+  };*/
+
+  service.addItem = function(name,quantity){
+    var namePromise = WeightFilterService.checkName(name);
+    var quantityPromise = WeightFilterService.checkQuantity(quantity);
+
+    $q.all([namePromise,quantityPromise]).
+    then(function(response){
+      var item = {
+        name:name,
+        quantity:quantity
+      }
+      items.push(item);
+    })
+    .catch(function(errorResponse){
+      console.log(errorResponse.message);
+    })
+  }
 
   service.removeItem = function (itemIndex) {
     items.splice(itemIndex, 1);
