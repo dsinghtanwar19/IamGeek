@@ -21,13 +21,13 @@ var list = this;
  }
 }]);
 
-myApp.service("ShoppingListService", ['$q','WeightLossFilterService', function($q, WeightLossFilterService){
+myApp.service("ShoppingListService", ['$q','WeightFilterService', function($q, WeightFilterService){
   var service = this;
   var items = [];
   service.addItem = function(name,quantity){
-    var promise = WeightLossFilterService.checkName(name);
+    var promise = WeightFilterService.checkName(name);
     promise.then(function(response){
-      var nextPromise = WeightLossFilterService.checkQuantity(quantity);
+      var nextPromise = WeightFilterService.checkQuantity(quantity);
       nextPromise.then(function(response){
         var item = {
           name : name,
@@ -51,7 +51,7 @@ myApp.service("ShoppingListService", ['$q','WeightLossFilterService', function($
   };
 }]);
 
-myApp.service("WeightLossFilterService",['$q','$timeout', function($q,$timeout){
+myApp.service("WeightFilterService",['$q','$timeout', function($q,$timeout){
   var service = this;
   service.checkName = function(name){
     var defferd = $q.defer();
