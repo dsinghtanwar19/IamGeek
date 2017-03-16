@@ -1,5 +1,5 @@
 
-var myApp = angular.module('myApp',[]).config(Config);
+var myApp = angular.module('myApp',[]);
 
 myApp.controller('shoppingController',['$scope', '$filter', 'ShoppingListService', function($scope, $filter, ShoppingListService){
 var list = this;
@@ -57,7 +57,7 @@ myApp.service("WeightFilterService",['$q','$timeout', function($q,$timeout){
     var defferd = $q.defer();
     var result = {
       message = ""
-    }
+    };
     $timeout(function(){
       if(name.toLowerCase().indexOf('cookie')== -1){
         deferred.reslove(result);
