@@ -2,14 +2,14 @@
 <html ng-app="myApp">
 <head>
   <meta charset="utf-8">
-
+<link rel="stylesheet" href="styles.css">
     <title>Hello Angular </title>
 </head>
 <body>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js" type="text/javascript"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
   <script src="app.js"></script>
-  <h1> Custom Service  </h1>
+  <h1> Custom Service for Promise </h1>
   <div id = "list" ng-controller="shoppingController as list" >
     <h3> shopping list </h3>
     <input type = "text" ng-model="list.itemName" placeholder="item name">
@@ -21,9 +21,6 @@
       <button ng-click="list.removeItem($index);"> Remove Item </button>
     </li>
     </ol>
-  <!--  <div ng-if="list.errorMessage" class="error">Error: {{list.errorMessage}}</div>-->
-    <!--   <div ng-show="list.errorMessage" class="error">Error: {{list.errorMessage}}</div>-->
- <div ng-hide="!list.errorMessage" class="error">Error: {{list.errorMessage}}</div>
 </div>
   </body>
 </html>

@@ -1,12 +1,6 @@
 
 var myApp = angular.module('myApp',[]).config(Config);
 
-Config.$inject = ['ShoppingListServiceProvider'];
-function Config(ShoppingListServiceProvider){
-  ShoppingListServiceProvider.defaults.maxItems = 5;
-}
-
-
 myApp.controller('shoppingController',['$scope', '$filter', 'ShoppingListService', function($scope, $filter, ShoppingListService){
 var list = this;
 
@@ -27,42 +21,72 @@ var list = this;
  }
 }]);
 
-function ShoppingListService(maxItems){
+myApp.service("ShoppingListService", ['$q','WeightLossFilterService', function($q, WeightLossFilterService){
   var service = this;
   var items = [];
-
-  service.addItem = function (itemName,quantity){
-    if((maxItems == undefined) || (maxItems !== undefined) && (items.length < maxItems)){
-      var item = {
-        name : itemName,
-        quantity:quantity
-      };
-      items.push(item);
-    }
-    else {
-      throw new Error("Max items (" + maxItems + ") reached.")
-    }
-
+  service.addItem = function(name,quantity){
+    var promise = WeightLossFilterService.checkName(name);
+    promise.then(function(response){
+      var nextPromise = WeightLossFilterService.checkQuantity(quantity);
+      nextPromise.then(function(response){
+        var item = {
+          name : name,
+          quantity:quantity
+        };
+        items.push(item);
+      }, function(errorResponse){
+        console.log(errorResponse.message);
+      });
+    }, function(errorResponse){
+      console.log(errorResponse.message);
+    });
   };
 
-  service.removeItem = function(itemIndex){
-    items.splice(itemIndex,1);
-  }
-  service.getItems= function(){
+  service.removeItem = function (itemIndex) {
+    items.splice(itemIndex, 1);
+  };
+
+  service.getItems = function () {
     return items;
-  }
-}
+  };
+}]);
 
-myApp.provider("ShoppingListService", function(){
-  var provider = this;
-
-  provider.defaults = {
-    maxItems: 100
+myApp.service("WeightLossFilterService",['$q','$timeout', function($q,$timeout){
+  var service = this;
+  service.checkName = function(name){
+    var defferd = $q.defer();
+    var result = {
+      message = "";
+    }
+    $timeout(function(){
+      if(name.toLowerCase().indexOf('cookie')== -1){
+        deferred.reslove(result);
+      }
+      else{
+        result.message = "Don't use Cookie";
+        defferd.reject(result);
+      }
+    },3000);
+    return defferd.promise;
   };
 
-  provider.$get = function () {
-    var shoppingList = new ShoppingListService(provider.defaults.maxItems);
+  service.checkQuantity = function (quantity) {
+    var deferred = $q.defer();
+    var result = {
+      message: ""
+    };
 
-    return shoppingList;
+    $timeout(function () {
+      // Check for too many boxes
+      if (quantity < 6) {
+        deferred.resolve(result);
+      }
+      else {
+        result.message = "That's too much, Yaakov!";
+        deferred.reject(result);
+      }
+    }, 1000);
+
+    return deferred.promise;
   };
-})
+}])
