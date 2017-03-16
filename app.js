@@ -54,7 +54,7 @@ myApp.service("ShoppingListService", ['$q','WeightFilterService', function($q, W
 myApp.service("WeightFilterService",['$q','$timeout', function($q,$timeout){
   var service = this;
   service.checkName = function(name){
-    var defferd = $q.defer();
+    var deferred = $q.defer();
     var result = {
       message : ""
     };
@@ -64,10 +64,10 @@ myApp.service("WeightFilterService",['$q','$timeout', function($q,$timeout){
       }
       else{
         result.message = "Don't use Cookie";
-        defferd.reject(result);
+        deferred.reject(result);
       }
     },3000);
-    return defferd.promise;
+    return deferred.promise;
   };
 
   service.checkQuantity = function (quantity) {
