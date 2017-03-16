@@ -24,7 +24,8 @@ var list = this;
 myApp.service("ShoppingListService", ['$q','WeightFilterService', function($q, WeightFilterService){
   var service = this;
   var items = [];
-  service.addItem = function(name,quantity){
+
+  /*service.addItem = function(name,quantity){
     var promise = WeightFilterService.checkName(name);
     promise.then(function(response){
       var nextPromise = WeightFilterService.checkQuantity(quantity);
@@ -40,6 +41,23 @@ myApp.service("ShoppingListService", ['$q','WeightFilterService', function($q, W
     }, function(errorResponse){
       console.log(errorResponse.message);
     });
+  };*/
+
+  service.addItem = function(name,quantity){
+    var promise= WeightFilterService.checkName(name);
+    promise.then(function(response){
+      return WeightFilterService.checkQuantity(quantity);
+    })
+    .then(function(response){
+      var item = {
+        name:name,
+        quantity:quantity
+      }
+      items.push(item);
+    })
+    .catch(function(errorResponse){
+      console.log(errorResponse.message);
+    })
   };
 
   service.removeItem = function (itemIndex) {
