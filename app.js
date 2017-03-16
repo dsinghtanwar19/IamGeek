@@ -60,7 +60,7 @@ myApp.service("WeightFilterService",['$q','$timeout', function($q,$timeout){
     };
     $timeout(function(){
       if(name.toLowerCase().indexOf('cookie')== -1){
-        deferred.reslove(result);
+        deferred.resolve(result);
       }
       else{
         result.message = "Don't use Cookie";
