@@ -56,7 +56,7 @@ myApp.service("WeightLossFilterService",['$q','$timeout', function($q,$timeout){
   service.checkName = function(name){
     var defferd = $q.defer();
     var result = {
-      message = "";
+      message = ""
     }
     $timeout(function(){
       if(name.toLowerCase().indexOf('cookie')== -1){
