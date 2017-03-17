@@ -1,5 +1,5 @@
 
-var myApp = angular.module('myApp',[]).constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");
+var myApp = angular.module('myApp',[]).constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
 
 myApp.controller('menuController',['$scope', '$filter', 'MenuListService', function($scope, $filter, MenuListService){
 var menu = this;
