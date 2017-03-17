@@ -1,11 +1,11 @@
 
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('ShoppingListController1',['$scope', '$filter', 'ShoppingListFactory', function($scope, $filter, ShoppingListFactory){
+myApp.controller('ShoppingListController1',['$scope', '$filter', 'shoppingListFactory', function($scope, $filter, shoppingListFactory){
   var list = this;
 
     // Use factory to create new shopping list service
-    var shoppingList = ShoppingListFactory();
+    var shoppingList = shoppingListFactory();
 
     list.items = shoppingList.getItems();
 
@@ -21,11 +21,11 @@ myApp.controller('ShoppingListController1',['$scope', '$filter', 'ShoppingListFa
     };
 }]);
 
-myApp.controller('ShoppingListController2',['$scope', '$filter', 'ShoppingListFactory', function($scope, $filter, ShoppingListFactory){
+myApp.controller('ShoppingListController2',['$scope', '$filter', 'shoppingListFactory', function($scope, $filter, shoppingListFactory){
   var list = this;
 
     // Use factory to create new shopping list service
-    var shoppingList = ShoppingListFactory(3);
+    var shoppingList = shoppingListFactory(3);
 
     list.items = shoppingList.getItems();
 
@@ -47,7 +47,7 @@ myApp.controller('ShoppingListController2',['$scope', '$filter', 'ShoppingListFa
 }]);
 
 
-myApp.service("ShoppingListService1",  function(maxItems){
+myApp.service("shoppingListService1",  function(maxItems){
   var service = this;
 
    // List of shopping items
@@ -76,9 +76,9 @@ myApp.service("ShoppingListService1",  function(maxItems){
    };
 });
 
-myApp.factory("ShoppingListFactory", function(){
+myApp.factory("shoppingListFactory", function(){
    var factory = function (maxItems){
-     return new ShoppingListService1(maxItems);
+     return new shoppingListService1(maxItems);
    };
 
    return factory;
