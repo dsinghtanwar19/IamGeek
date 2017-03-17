@@ -90,3 +90,10 @@ myApp.directive("listItemDescription", function(){
   };
   return ddo;
 })
+
+myApp.directive("listItem", function(){
+  var ddo = {
+    templateUrl: "listItem.html"
+  }
+  return ddo;
+})
