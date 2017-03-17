@@ -76,13 +76,13 @@ myApp.service("ShoppingListService",  function(maxItems){
    };
 });
 
-myApp.factory("ShoppingListFactory", function(){
+myApp.factory("ShoppingListFactory",['ShoppingListService', function(ShoppingListService){
    var factory = function (maxItems){
      return new ShoppingListService(maxItems);
    }
 
    return factory;
-})
+}]);
 
 myApp.directive("listItemDescription", function(){
   var ddo = {
