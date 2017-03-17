@@ -17,7 +17,7 @@ var service = this;
 service.getList = function(){
 var response = $http({
   method : "GET",
-  url : ("http://davids-restaurant.herokuapp.com/categories.json")
+  url : ("https://davids-restaurant.herokuapp.com/categories.json")
 });
 return response;
 }
