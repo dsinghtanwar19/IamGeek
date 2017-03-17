@@ -1,5 +1,5 @@
 
-var myApp = angular.module('myApp',[]);
+var myApp = angular.module('myApp',[]).constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");
 
 myApp.controller('menuController',['$scope', '$filter', 'MenuListService', function($scope, $filter, MenuListService){
 var menu = this;
@@ -22,12 +22,12 @@ menu.logMenuList = function(shortName){
 }
 }]);
 
-myApp.service("MenuListService", ['$http', function($http){
+myApp.service("MenuListService", ['$http','ApiBasePath' function($http, ApiBasePath){
 var service = this;
 service.getList = function(){
 var response = $http({
   method : "GET",
-  url : ("https://davids-restaurant.herokuapp.com/categories.json")
+  url : (ApiBasePath + "/categories.json")
 });
 return response;
 }
@@ -35,7 +35,7 @@ return response;
 service.logList=function(shortName){
   var response = $http({
     method: "GET",
-    url: ("https://davids-restaurant.herokuapp.com/menu_items.json" ),
+    url: (ApiBasePath + "/menu_items.json" ),
     params:{
       category:shortName
     }
