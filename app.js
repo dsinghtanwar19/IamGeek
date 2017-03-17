@@ -1,127 +1,26 @@
 
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('shoppingController',['$scope', '$filter', 'ShoppingListService', function($scope, $filter, ShoppingListService){
-var list = this;
-
- list.items = ShoppingListService.getItems();
-
- list.itemName = "";
- list.itemQuantity = "";
- list.addItem = function(){
-   try{
-     ShoppingListService.addItem(list.itemName, list.itemQuantity);
-   }
-   catch(error){
-     list.errorMessage = error.message;
-   }
- }
- list.removeItem = function(itemIndex){
-   ShoppingListService.removeItem(itemIndex);
- }
+myApp.controller('menuController',['$scope', '$filter', 'MenuListService', function($scope, $filter, MenuListService){
+var menu = this;
+var promise = MenuListService.getList();
+promise.then(function(response){
+  menu.categories = response.data;
+})
+.catch(function(error){
+  console.log("something went wrong");
+})
 }]);
 
-myApp.service("ShoppingListService", ['$q','WeightFilterService', function($q, WeightFilterService){
-  var service = this;
-  var items = [];
+myApp.service("MenuListService", ['$http', function($http){
+var service = this;
+service.getList = function(){
+var response = $http({
+  method : "GET",
+  url : ("http://davids-restaurant.herokuapp.com/categories.json")
+});
+return response;
+}
 
-  /*service.addItem = function(name,quantity){
-    var promise = WeightFilterService.checkName(name);
-    promise.then(function(response){
-      var nextPromise = WeightFilterService.checkQuantity(quantity);
-      nextPromise.then(function(response){
-        var item = {
-          name : name,
-          quantity:quantity
-        };
-        items.push(item);
-      }, function(errorResponse){
-        console.log(errorResponse.message);
-      });
-    }, function(errorResponse){
-      console.log(errorResponse.message);
-    });
-  };*/
 
-  /*service.addItem = function(name,quantity){
-    var promise= WeightFilterService.checkName(name);
-    promise.then(function(response){
-      return WeightFilterService.checkQuantity(quantity);
-    })
-    .then(function(response){
-      var item = {
-        name:name,
-        quantity:quantity
-      }
-      items.push(item);
-    })
-    .catch(function(errorResponse){
-      console.log(errorResponse.message);
-    })
-  };*/
-
-  service.addItem = function(name,quantity){
-    var namePromise = WeightFilterService.checkName(name);
-    var quantityPromise = WeightFilterService.checkQuantity(quantity);
-
-    $q.all([namePromise,quantityPromise]).
-    then(function(response){
-      var item = {
-        name:name,
-        quantity:quantity
-      }
-      items.push(item);
-    })
-    .catch(function(errorResponse){
-      console.log(errorResponse.message);
-    })
-  }
-
-  service.removeItem = function (itemIndex) {
-    items.splice(itemIndex, 1);
-  };
-
-  service.getItems = function () {
-    return items;
-  };
 }]);
-
-myApp.service("WeightFilterService",['$q','$timeout', function($q,$timeout){
-  var service = this;
-  service.checkName = function(name){
-    var deferred = $q.defer();
-    var result = {
-      message : ""
-    };
-    $timeout(function(){
-      if(name.toLowerCase().indexOf('cookie')== -1){
-        deferred.resolve(result);
-      }
-      else{
-        result.message = "Don't use Cookie";
-        deferred.reject(result);
-      }
-    },3000);
-    return deferred.promise;
-  };
-
-  service.checkQuantity = function (quantity) {
-    var deferred = $q.defer();
-    var result = {
-      message: ""
-    };
-
-    $timeout(function () {
-      // Check for too many boxes
-      if (quantity < 6) {
-        deferred.resolve(result);
-      }
-      else {
-        result.message = "That's too much, Yaakov!";
-        deferred.reject(result);
-      }
-    }, 1000);
-
-    return deferred.promise;
-  };
-}])
