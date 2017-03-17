@@ -22,7 +22,7 @@ menu.logMenuList = function(shortName){
 }
 }]);
 
-myApp.service("MenuListService", ['$http','ApiBasePath' function($http, ApiBasePath){
+myApp.service("MenuListService", ['$http','ApiBasePath', function($http, ApiBasePath){
 var service = this;
 service.getList = function(){
 var response = $http({
