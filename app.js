@@ -78,7 +78,7 @@ myApp.service("ShoppingListService",  function(maxItems){
 
 myApp.factory("ShoppingListFactory", function(){
    var factory = function (maxItems){
-     return new ShoppingListFactory(maxItems);
+     return new ShoppingListService(maxItems);
    }
 
    return factory;
