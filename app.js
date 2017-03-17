@@ -15,14 +15,14 @@ menu.logMenuList = function(shortName){
   var promise = MenuListService.logList(shortName);
   promise.then(function(response){
     console.log(response.data);
-  });
+  })
   .catch(function(error){
     console.log(error);
   })
 }
 }]);
 
-myApp.service("MenuListService", ['$http', 'ApiBasePath', function($http, ApiBasePath){
+myApp.service("MenuListService", ['$http', function($http){
 var service = this;
 service.getList = function(){
 var response = $http({
