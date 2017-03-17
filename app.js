@@ -47,7 +47,7 @@ myApp.controller('ShoppingListController2',['$scope', '$filter', 'ShoppingListFa
 }]);
 
 
-myApp.service("ShoppingListService",  function(maxItems){
+myApp.service("ShoppingListService1",  function(maxItems){
   var service = this;
 
    // List of shopping items
@@ -76,13 +76,13 @@ myApp.service("ShoppingListService",  function(maxItems){
    };
 });
 
-myApp.factory("ShoppingListFactory",['ShoppingListService', function(ShoppingListService){
+myApp.factory("ShoppingListFactory", function(){
    var factory = function (maxItems){
-     return new ShoppingListService(maxItems);
-   }
+     return new ShoppingListService1(maxItems);
+   };
 
    return factory;
-}]);
+});
 
 myApp.directive("listItemDescription", function(){
   var ddo = {
