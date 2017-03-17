@@ -76,7 +76,7 @@ function shoppingListService1(maxItems){
    };
 }
 
-myApp.factory("shoppingListFactory" function(){
+myApp.factory("shoppingListFactory", function(){
    var factory = function (maxItems){
      return new shoppingListService1(maxItems);
    };
