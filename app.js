@@ -1,45 +1,91 @@
 
-var myApp = angular.module('myApp',[]).constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
+var myApp = angular.module('myApp',[]);
 
-myApp.controller('menuController',['$scope', '$filter', 'MenuListService', function($scope, $filter, MenuListService){
-var menu = this;
-var promise = MenuListService.getList();
-promise.then(function(response){
-  menu.categories = response.data;
-})
-.catch(function(error){
-  console.log("something went wrong");
-})
+myApp.controller('ShoppingListController1',['$scope', '$filter', 'ShoppingListFactory', function($scope, $filter, ShoppingListFactory){
+  var list = this;
 
-menu.logMenuList = function(shortName){
-  var promise = MenuListService.logList(shortName);
-  promise.then(function(response){
-    console.log(response.data);
-  })
-  .catch(function(error){
-    console.log(error);
-  })
-}
-}]);
+    // Use factory to create new shopping list service
+    var shoppingList = ShoppingListFactory();
 
-myApp.service("MenuListService", ['$http','ApiBasePath', function($http, ApiBasePath){
-var service = this;
-service.getList = function(){
-var response = $http({
-  method : "GET",
-  url : (ApiBasePath + "/categories.json")
-});
-return response;
-}
+    list.items = shoppingList.getItems();
 
-service.logList=function(shortName){
-  var response = $http({
-    method: "GET",
-    url: (ApiBasePath + "/menu_items.json" ),
-    params:{
-      category:shortName
+    list.itemName = "";
+    list.itemQuantity = "";
+
+    list.addItem = function () {
+      shoppingList.addItem(list.itemName, list.itemQuantity);
     }
-  });
-  return response;
-}
+
+    list.removeItem = function (itemIndex) {
+      shoppingList.removeItem(itemIndex);
+    };
 }]);
+
+myApp.controller('ShoppingListController2',['$scope', '$filter', 'ShoppingListFactory', function($scope, $filter, ShoppingListFactory){
+  var list = this;
+
+    // Use factory to create new shopping list service
+    var shoppingList = ShoppingListFactory(3);
+
+    list.items = shoppingList.getItems();
+
+    list.itemName = "";
+    list.itemQuantity = "";
+
+    list.addItem = function () {
+      try {
+        shoppingList.addItem(list.itemName, list.itemQuantity);
+      } catch (error) {
+        list.errorMessage = error.message;
+      }
+
+    };
+
+    list.removeItem = function (itemIndex) {
+      shoppingList.removeItem(itemIndex);
+    };
+}]);
+
+
+myApp.service("ShoppingListService",  function(maxItems){
+  var service = this;
+
+   // List of shopping items
+   var items = [];
+
+   service.addItem = function (itemName, quantity) {
+     if ((maxItems === undefined) ||
+         (maxItems !== undefined) && (items.length < maxItems)) {
+       var item = {
+         name: itemName,
+         quantity: quantity
+       };
+       items.push(item);
+     }
+     else {
+       throw new Error("Max items (" + maxItems + ") reached.");
+     }
+   };
+
+   service.removeItem = function (itemIndex) {
+     items.splice(itemIndex, 1);
+   };
+
+   service.getItems = function () {
+     return items;
+   };
+}]);
+
+myApp.factory("ShoppingListFactory", function(){
+   var factory = function (maxItems){
+     return new ShoppingListFactory(maxItems);
+   }
+
+   return factory;
+})
+
+myApp.directive("listItemDescription", function(){
+  var ddo = {
+    template : "{{item.quantity}} of {{item.name}}"
+  }
+})
