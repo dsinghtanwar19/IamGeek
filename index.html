@@ -12,25 +12,25 @@
   <h1>Template Expanding Directive</h1>
 
     <!-- LIST #1 - unlimited items -->
-    <div id="list1" ng-controller='ShoppingListController1 as list'>
+    <div id="list1" ng-controller='ShoppingListController1 as list1'>
       <h3>Shopping List #1</h3>
-      <input type="text" ng-model="list.itemName" placeholder="item name">
-      <input type="text" ng-model="list.itemQuantity" placeholder="quantity">
-      <button ng-click="list.addItem();">Add Item</button>
+      <input type="text" ng-model="list1.itemName" placeholder="item name">
+      <input type="text" ng-model="list1.itemQuantity" placeholder="quantity">
+      <button ng-click="list1.addItem();">Add Item</button>
       <ol>
-        <li list-item ng-repeat = "item in list.items"></li>
+        <li list-item ng-repeat = "item in list1.items"></li>
       </ol>
       <div ng-if="list.errorMessage" class="error">Error: {{list.errorMessage}}</div>
     </div>
 
     <!-- LIST #2 (limited to 3 items) -->
-    <div id="list2" ng-controller='ShoppingListController2 as list'>
+    <div id="list2" ng-controller='ShoppingListController2 as list2'>
       <h3>Shopping List #2 (limited to 3 items)</h3>
-      <input type="text" ng-model="list.itemName" placeholder="item name">
-      <input type="text" ng-model="list.itemQuantity" placeholder="quantity">
-      <button ng-click="list.addItem();">Add Item</button>
+      <input type="text" ng-model="list2.itemName" placeholder="item name">
+      <input type="text" ng-model="list2.itemQuantity" placeholder="quantity">
+      <button ng-click="list2.addItem();">Add Item</button>
       <ol>
-        <list-item ng-repeat="item in list.items"></list-item>
+        <list-item ng-repeat="item in list2.items"></list-item>
       </ol>
       <div ng-if="list.errorMessage" class="error">Error: {{list.errorMessage}}</div>
     </div>
