@@ -32,7 +32,7 @@ myApp.controller("ShoppingListDirectiveController",['$scope', function($scope){
 }])
 
 
-myApp.controller('ShoppingListController1',['$scope', '$filter', 'shoppingListFactory', function($scope, $filter, shoppingListFactory){
+myApp.controller('ShoppingListController',['$scope', '$filter', 'shoppingListFactory', function($scope, $filter, shoppingListFactory){
   var list = this;
 
     // Use factory to create new shopping list service
