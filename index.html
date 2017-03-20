@@ -13,11 +13,11 @@
 
     <!-- LIST #1 - unlimited items -->
     <div id="list1" ng-controller='ShoppingListController1 as list1'>
-      <h3>Shopping List #1</h3>
+
       <input type="text" ng-model="list1.itemName" placeholder="item name">
       <input type="text" ng-model="list1.itemQuantity" placeholder="quantity">
       <button ng-click="list1.addItem();">Add Item</button>
-    <list-item my-list = "list1"></list-item>
+    <list-item my-list = "list1" title = "{{list1.title}}"></list-item>
       <div ng-if="list.errorMessage" class="error">Error: {{list.errorMessage}}</div>
     </div>
 

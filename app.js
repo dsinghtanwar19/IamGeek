@@ -6,7 +6,8 @@ myApp.directive("listItem", function(){
 
     templateUrl: "listItem.html",
     scope:{
-      list : "=myList"
+      list : "=myList",
+      title: '@title'
     }
   }
   return ddo;
@@ -20,16 +21,19 @@ myApp.controller('ShoppingListController1',['$scope', '$filter', 'shoppingListFa
     var shoppingList = shoppingListFactory();
 
     list.items = shoppingList.getItems();
-
+    var origTitle = "Shopping List #1";
+    list.title = origTitle + "(" + list.items.length + "items)";
     list.itemName = "";
     list.itemQuantity = "";
 
     list.addItem = function () {
       shoppingList.addItem(list.itemName, list.itemQuantity);
+        list.title = origTitle + "(" + list.items.length + "items)";
     }
 
     list.removeItem = function (itemIndex) {
       shoppingList.removeItem(itemIndex);
+        list.title = origTitle + "(" + list.items.length + "items)";
     };
 }]);
 
