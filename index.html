@@ -23,12 +23,12 @@
 
     <!-- LIST #2 (limited to 3 items) -->
     <div id="list2" ng-controller='ShoppingListController2 as list2'>
-      <h3>Shopping List #2 (limited to 3 items)</h3>
+
       <input type="text" ng-model="list2.itemName" placeholder="item name">
       <input type="text" ng-model="list2.itemQuantity" placeholder="quantity">
       <button ng-click="list2.addItem();">Add Item</button>
-      <list-item my-list = "list2"></list-item>
-      <div ng-if="list2.errorMessage" class="error">Error: {{list.errorMessage}}</div>
+      <list-item my-list = "list2" title = "{{list2.title}}"></list-item>
+      <div ng-if="list2.errorMessage" class="error">Error: {{list2.errorMessage}}</div>
     </div>
 
   </body>
