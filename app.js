@@ -84,16 +84,16 @@ myApp.factory("shoppingListFactory", function(){
    return factory;
 });
 
-myApp.directive("listItemDescription", function(){
-  var ddo = {
-    template : "{{item.quantity}} of {{item.name}}"
-  };
-  return ddo;
-})
-
 myApp.directive("listItem", function(){
   var ddo = {
     templateUrl: "listItem.html"
   }
+  return ddo;
+})
+
+myApp.directive("listItemDescription", function(){
+  var ddo = {
+    template : "{{item.quantity}} of {{item.name}}"
+  };
   return ddo;
 })
