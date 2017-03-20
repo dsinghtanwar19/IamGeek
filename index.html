@@ -9,27 +9,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js" type="text/javascript"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
   <script src="app.js"></script>
-  <h1>Template Expanding Directive</h1>
+  <h1>Directives with Their Own Controllers</h1>
 
     <!-- LIST #1 - unlimited items -->
-    <div id="list1" ng-controller='ShoppingListController1 as list1'>
+    <div id="list1" ng-controller='ShoppingListController as list'>
 
-      <input type="text" ng-model="list1.itemName" placeholder="item name">
-      <input type="text" ng-model="list1.itemQuantity" placeholder="quantity">
-      <button ng-click="list1.addItem();">Add Item</button>
-    <list-item my-list = "list1" title = "{{list1.title}}"></list-item>
-      <div ng-if="list.errorMessage" class="error">Error: {{list.errorMessage}}</div>
+      <input type="text" ng-model="list.itemName" placeholder="item name">
+      <input type="text" ng-model="list.itemQuantity" placeholder="quantity">
+      <button ng-click="list.addItem();">Add Item</button>
+    <list-item my-list = "list" title = "{{list.title}}"></list-item>
+
     </div>
 
     <!-- LIST #2 (limited to 3 items) -->
-    <div id="list2" ng-controller='ShoppingListController2 as list2'>
 
-      <input type="text" ng-model="list2.itemName" placeholder="item name">
-      <input type="text" ng-model="list2.itemQuantity" placeholder="quantity">
-      <button ng-click="list2.addItem();">Add Item</button>
-      <list-item my-list = "list2" title = "{{list2.title}}"></list-item>
-      <div ng-if="list2.errorMessage" class="error">Error: {{list2.errorMessage}}</div>
-    </div>
 
   </body>
 </html>

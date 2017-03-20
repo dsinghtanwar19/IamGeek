@@ -6,12 +6,30 @@ myApp.directive("listItem", function(){
 
     templateUrl: "listItem.html",
     scope:{
-      list : "=myList",
-      title: '@title'
-    }
+      items : "<",
+      title: '@'
+    },
+    controller: ShoppingListDirectiveController,
+    controllerAs: 'list',
+    bindToController : true
+
   }
   return ddo;
 })
+
+myApp.controller("ShoppingListDirectiveController",['$scope', function($scope){
+   var list = this;
+   list.cookiesInList = function () {
+   for (var i = 0; i < list.items.length; i++) {
+     var name = list.items[i].name;
+     if (name.toLowerCase().indexOf("cookie") !== -1) {
+       return true;
+     }
+   }
+
+   return false;
+ };
+}])
 
 
 myApp.controller('ShoppingListController1',['$scope', '$filter', 'shoppingListFactory', function($scope, $filter, shoppingListFactory){
