@@ -3,18 +3,15 @@ var myApp = angular.module('myApp',[]);
 
 myApp.directive("listItem", function(){
   var ddo = {
-    restrict : "E",
-    templateUrl: "listItem.html"
+
+    templateUrl: "listItem.html",
+    scope:{
+      list : "=myList"
+    }
   }
   return ddo;
 })
 
-myApp.directive("listItemDescription", function(){
-  var ddo = {
-    template : "{{item.quantity}} of {{item.name}}"
-  };
-  return ddo;
-})
 
 myApp.controller('ShoppingListController1',['$scope', '$filter', 'shoppingListFactory', function($scope, $filter, shoppingListFactory){
   var list = this;

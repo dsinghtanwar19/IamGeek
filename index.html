@@ -17,9 +17,7 @@
       <input type="text" ng-model="list1.itemName" placeholder="item name">
       <input type="text" ng-model="list1.itemQuantity" placeholder="quantity">
       <button ng-click="list1.addItem();">Add Item</button>
-      <ol>
-        <li list-item ng-repeat = "item in list1.items"></li>
-      </ol>
+    <list-item my-list = "list1"></list-item>
       <div ng-if="list.errorMessage" class="error">Error: {{list.errorMessage}}</div>
     </div>
 
