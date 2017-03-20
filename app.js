@@ -3,6 +3,7 @@ var myApp = angular.module('myApp',[]);
 
 myApp.directive("listItem", function(){
   var ddo = {
+    restrict : "AE",
     templateUrl: "listItem.html"
   }
   return ddo;
