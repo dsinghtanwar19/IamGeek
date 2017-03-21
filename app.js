@@ -7,7 +7,8 @@ myApp.directive("listItems", function(){
     templateUrl: "listItems.html",
     scope:{
       items : "<",
-      title: '@'
+      title: '@',
+      badRemove: "="
     },
     controller: ShoppingListDiController,
     controllerAs: 'list',
@@ -48,6 +49,8 @@ myApp.controller('ShoppingListController',['$scope', '$filter', 'shoppingListFac
     }
 
     list.removeItem = function (itemIndex) {
+      console.log("'this' is: ", this);
+    this.lastRemoved = "Last item removed was " + this.items[itemIndex].name;
       shoppingList.removeItem(itemIndex);
         list.title = origTitle + "(" + list.items.length + "items)";
     };

@@ -2,7 +2,7 @@
 <ol>
   <li ng-repeat = "item in list.items">
     {{item.quantity}} of {{item.name}}
-  <!--  <button ng-click= "list.removeItem($index);">Remove</button>-->
+   <button ng-click= "list.badRemove($index);">Bad Remove</button>
   </li>
   <ol>
 <div class="error" ng-if="list.cookiesInList()">WARNING! WARNING! COOKIES DETECTED!</div>
