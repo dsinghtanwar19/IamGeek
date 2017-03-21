@@ -39,6 +39,7 @@ function ShoppingListDirectiveLink(scope, element, attrs, controller) {
 
   function displayCookieWarning(){
     var warningElem = element.find("div");
+    console.log("test", warningElem);
     warningElem.css('display', 'block');
   }
 
