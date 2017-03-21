@@ -17,7 +17,7 @@ myApp.directive("listItem", function(){
   return ddo;
 })
 
-myApp.controller("ShoppingListDirectiveController",['$scope', function($scope){
+myApp.controller('ShoppingListDirectiveController',['$scope', function($scope){
    var list = this;
    list.cookiesInList = function () {
    for (var i = 0; i < list.items.length; i++) {
