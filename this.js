@@ -13,4 +13,4 @@ yaakov.describe();
 
 var describe = yaakov.describe;
 describe();
-/*describe.call(yaakov);*/
+describe.call(yaakov);
