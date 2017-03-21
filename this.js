@@ -11,6 +11,6 @@ function Person() {
 var yaakov = new Person();
 yaakov.describe();
 
-/*var describe = yaakov.describe;
+var describe = yaakov.describe;
 describe();
-describe.call(yaakov);*/
+/*describe.call(yaakov);*/
