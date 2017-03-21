@@ -13,11 +13,18 @@ myApp.directive("listItems", function(){
     },
     controller: ShoppingListDiController,
     controllerAs: 'list',
-    bindToController : true
+    bindToController : true,
+    link:ShoppingListDirectiveLink
 
   }
   return ddo;
 })
+
+function ShoppingListDirectiveLink(scope, element, attrs, controller) {
+  console.log("Link scope is: ", scope);
+  console.log("Controller instance is: ", controller);
+  console.log("Element is: ", element);
+}
 
 function ShoppingListDiController(){
    var list = this;
