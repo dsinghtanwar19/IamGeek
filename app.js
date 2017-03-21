@@ -1,7 +1,16 @@
 
-var myApp = angular.module('myApp',[]).controller('ShoppingListDiController', ShoppingListDiController);
+var myApp = angular.module('myApp',[]).controller('ShoppingComponentController', ShoppingComponentController)
+.component('shoppingList', {
+  templateUrl: "listItems.html",
+  controller: ShoppingComponentController,
+  bindings :{
+    items: '<',
+   myTitle: '@title',
+   onRemove: '&'
+  }
+});
 
-myApp.directive("listItems", function(){
+/*myApp.directive("listItems", function(){
   var ddo = {
 
     templateUrl: "listItems.html",
@@ -39,27 +48,27 @@ function ShoppingListDirectiveLink(scope, element, attrs, controller) {
   });
 
   function displayCookieWarning(){
-    /*var warningElem = element.find("div");
+    var warningElem = element.find("div");
     console.log("test", warningElem);
-    warningElem.css('display', 'block');*/
+    warningElem.css('display', 'block');
 
     var warningElem = element.find("div.error");
     warningElem.slideDown(900);
   }
 
   function removeCookieWarning(){
-    /*var warningElem = element.find("div");
-    warningElem.css('display', 'none');*/
+    var warningElem = element.find("div");
+    warningElem.css('display', 'none');
     var warningElem = element.find("div.error");
     warningElem.slideUp(900);
   }
-}
+}*/
 
-function ShoppingListDiController(){
-   var list = this;
-   list.cookiesInList = function () {
-   for (var i = 0; i < list.items.length; i++) {
-     var name = list.items[i].name;
+function ShoppingComponentController(){
+   var $ctrl = this;
+   $ctrl.cookiesInList = function () {
+   for (var i = 0; i < $ctrl.items.length; i++) {
+     var name = $ctrl.items[i].name;
      if (name.toLowerCase().indexOf("cookie") !== -1) {
        return true;
      }

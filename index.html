@@ -10,40 +10,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js" type="text/javascript"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
   <script src="app.js"></script>
-  <h1>Directives with Their Own Controllers</h1>
-
-    <!-- LIST #1 - unlimited items -->
-    <div id="list" ng-controller='ShoppingListController as list'>
-<div>
+   <h1>Shopping List With Components</h1>
+  <<div id="list" ng-controller='ShoppingListController as list'>
       <input type="text" ng-model="list.itemName" placeholder="item name">
       <input type="text" ng-model="list.itemQuantity" placeholder="quantity">
       <button ng-click="list.addItem();">Add Item</button>
       <span>{{ list.lastRemoved }}</span>
-    </div>
-    <list-items
-        id="list1"
-        items="list.items"
-        title="{{list.title}}"
-        on-remove="list.removeItem(index)">
-
-        <span class="warning">WARNING! WARNING! {{list.warning}}</span>
-
-      </list-items>
 
       <list-items
-        id="list2"
         items="list.items"
         title="{{list.title}}"
-        on-remove="list.removeItem(index)">
+        on-remove="list.removeItem(index)"></list-items>
 
-        <div>
-          <div class="title">OH, THE HORROR!</div>
-          <div>{{list.warning}}</div>
-        </div>
+    </div>
 
-      </list-items>
-
-</div>
 
 
 
