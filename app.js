@@ -1,6 +1,6 @@
 
 var myApp = angular.module('myApp',[]).controller('ShoppingComponentController', ShoppingComponentController)
-.component('shoppingList', {
+.component('listItems', {
   templateUrl: "listItems.html",
   controller: ShoppingComponentController,
   bindings :{
