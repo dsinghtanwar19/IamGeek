@@ -8,7 +8,8 @@ myApp.directive("listItems", function(){
     scope:{
       items : "<",
       title: '@',
-      badRemove: "="
+      badRemove: "=",
+      onRemove: "&"
     },
     controller: ShoppingListDiController,
     controllerAs: 'list',
