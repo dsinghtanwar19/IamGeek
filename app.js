@@ -1,5 +1,5 @@
 
-var myApp = angular.module('myApp',[]).controller('ShoppingComponentController', ShoppingComponentController)
+var myApp = angular.module('myApp',[])
 .component('listItems', {
   templateUrl: "listItems.html",
   controller: ShoppingComponentController,
