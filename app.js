@@ -9,7 +9,7 @@ myApp.directive("listItem", function(){
       items : "<",
       title: '@'
     },
-    controller: ShoppingListDirectiveController,
+    controller: ShoppingListDiController,
     controllerAs: 'list',
     bindToController : true
 
@@ -17,7 +17,7 @@ myApp.directive("listItem", function(){
   return ddo;
 })
 
-myApp.controller('ShoppingListDirectiveController',['$scope', function($scope){
+myApp.controller('ShoppingListDiController',['$scope', function($scope){
    var list = this;
    list.cookiesInList = function () {
    for (var i = 0; i < list.items.length; i++) {
