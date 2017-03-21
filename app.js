@@ -1,5 +1,5 @@
 
-var myApp = angular.module('myApp',[]);
+var myApp = angular.module('myApp',[]).controller('ShoppingListDiController', ShoppingListDiController);
 
 myApp.directive("listItem", function(){
   var ddo = {
@@ -17,7 +17,7 @@ myApp.directive("listItem", function(){
   return ddo;
 })
 
-myApp.controller('ShoppingListDiController',['$scope', function($scope){
+function ShoppingListDiController(){
    var list = this;
    list.cookiesInList = function () {
    for (var i = 0; i < list.items.length; i++) {
@@ -29,9 +29,7 @@ myApp.controller('ShoppingListDiController',['$scope', function($scope){
 
    return false;
  };
-}])
-
-
+}
 myApp.controller('ShoppingListController',['$scope', '$filter', 'shoppingListFactory', function($scope, $filter, shoppingListFactory){
   var list = this;
 
