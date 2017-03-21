@@ -24,6 +24,26 @@ function ShoppingListDirectiveLink(scope, element, attrs, controller) {
   console.log("Link scope is: ", scope);
   console.log("Controller instance is: ", controller);
   console.log("Element is: ", element);
+  scope.$watch('list.cookiesInList()', function (newValue, oldValue) {
+    console.log("Old value: ", oldValue);
+    console.log("New value: ", newValue);
+
+    if (newValue === true) {
+      displayCookieWarning();
+    }
+    else {
+      removeCookieWarning();
+    }
+
+  });
+
+  function displayCookieWarning(){
+
+  }
+
+  function removeCookieWarning(){
+    
+  }
 }
 
 function ShoppingListDiController(){
