@@ -1,10 +1,10 @@
 
 var myApp = angular.module('myApp',[]).controller('ShoppingListDiController', ShoppingListDiController);
 
-myApp.directive("listItem", function(){
+myApp.directive("listItems", function(){
   var ddo = {
 
-    templateUrl: "listItem.html",
+    templateUrl: "listItems.html",
     scope:{
       items : "<",
       title: '@'
