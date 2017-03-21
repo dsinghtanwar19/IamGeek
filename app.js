@@ -38,11 +38,13 @@ function ShoppingListDirectiveLink(scope, element, attrs, controller) {
   });
 
   function displayCookieWarning(){
-
+    var warningElem = element.find("div");
+    warningElem.css('display', 'block');
   }
 
   function removeCookieWarning(){
-    
+    var warningElem = element.find("div");
+    warningElem.css('display', 'none');
   }
 }
 
