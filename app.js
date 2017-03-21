@@ -38,14 +38,19 @@ function ShoppingListDirectiveLink(scope, element, attrs, controller) {
   });
 
   function displayCookieWarning(){
-    var warningElem = element.find("div");
+    /*var warningElem = element.find("div");
     console.log("test", warningElem);
-    warningElem.css('display', 'block');
+    warningElem.css('display', 'block');*/
+
+    var warningElem = element.find("div.error");
+    warningElem.slideDown(900);
   }
 
   function removeCookieWarning(){
-    var warningElem = element.find("div");
-    warningElem.css('display', 'none');
+    /*var warningElem = element.find("div");
+    warningElem.css('display', 'none');*/
+    var warningElem = element.find("div.error");
+    warningElem.slideUp(900);
   }
 }
 
