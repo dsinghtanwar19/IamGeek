@@ -76,6 +76,10 @@ function ShoppingComponentController(){
 
    return false;
  };
+
+ $ctrl.remove = function(myIndex){
+   $ctrl.onRemove({index : myIndex})
+ }
 }
 myApp.controller('ShoppingListController',['$scope', '$filter', 'shoppingListFactory', function($scope, $filter, shoppingListFactory){
   var list = this;
